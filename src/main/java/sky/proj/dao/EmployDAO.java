@@ -8,7 +8,7 @@ import java.util.List;
 public interface EmployDAO {
     Integer add(Employ employ);
 
-    Employ getById(int id);
+    Employ getById(Long id);
 
     List<Employ> getAllEmploy();
 

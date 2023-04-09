@@ -18,8 +18,12 @@ public class Employ {
     private String lastName;
     @Column(name = "age")
     private int age;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
     @Column(name = "city_id")
     private int city;
+
+
 
     public Employ(String firstName, String lastName, int age, int city) {
         this.firstName = firstName;

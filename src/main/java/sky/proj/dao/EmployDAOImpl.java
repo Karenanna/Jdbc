@@ -27,7 +27,7 @@ public class EmployDAOImpl implements EmployDAO {
     }
 
     @Override
-    public Employ getById(int id) {
+    public Employ getById(Long id) {
         try (Session session = HibernateSessionsFactoryUtil.getSessionFactory().openSession()) {
             return session.get(Employ.class, id);
         }

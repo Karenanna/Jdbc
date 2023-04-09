@@ -1,8 +1,33 @@
 package sky.proj.models;
 
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
+
 public class City {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private int city_id;
+    private String city_name;
+
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+    private List<Employ> employs;
+
+
+    public int getCity_id() {
+        return city_id;
+    }
+
+    public void setCity_id() {
+        this.city_id = city_id;
+    }
+
+    public City(int city_id) {
+        this.city_id = city_id;
+
+
+    }
 
     private String name;
 

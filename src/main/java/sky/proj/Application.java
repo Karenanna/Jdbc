@@ -1,22 +1,62 @@
 package sky.proj;
 
+import sky.proj.dao.CityDAO;
+import sky.proj.dao.CityDAOImpl;
 import sky.proj.dao.EmployDAO;
 import sky.proj.dao.EmployDAOImpl;
+import sky.proj.models.City;
 import sky.proj.models.Employ;
 
+import java.sql.SQLException;
+
 public class Application {
-    public static void main(String[] args, Employ employ) {
+    private static CityDAO cityDAO = new CityDAOImpl();
 
-        EmployDAO employDAO = new EmployDAOImpl();
-        employDAO.getAllEmploy().forEach(System.out::println);
-        Integer employId = employDAO.add(employ);
-        System.out.println(employDAO.getAllEmploy());
-        System.out.println();
-        employDAO.updateEmploy(employ, employId);
-        employDAO.deleteEmploy(employDAO.getById(employId));
+    private static EmployDAO employDAO = new EmployDAOImpl();
 
+    static void addCity(City city) {
+        cityDAO.add(city);
+    }
 
-        System.out.println(employDAO.getById(3));
+    static City findCityById(Long id) {
+        return cityDAO.findById(id);
+    }
+
+    static void updateCity(City city) {
+        cityDAO.updateCity(city);
+    }
+
+    static void deleteCity(City city) {
+        cityDAO.deleteCity(city);
+    }
+
+    static void addEmploy(Employ employ) {
+        employDAO.add(employ);
+    }
+
+    static Employ findEmployById(Long id) {
+        return employDAO.getById(id);
+    }
+
+    static void updateEmploy(Employ employ) {
+        employDAO.updateEmploy(employ, employ.getId());
+    }
+
+    static void deleteEmploy(Employ employ) {
+        employDAO.deleteEmploy(employ);
+    }
+
+    static void printEmploy() {
+        for (Employ employ : employDAO.getAllEmploy()) {
+            System.out.println(employ);
+        }
+    }
+
+    public static void main(String[] args) throws SQLException {
     }
 }
+
+
+
+
 
